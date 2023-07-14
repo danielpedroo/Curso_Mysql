@@ -1,0 +1,49 @@
+    O que é SQL ?
+
+    -->  A Sql é uma linguagem de banco de dados
+        |--> É um acronimo de Structured Query Language (Linguagem estruturada de consulta)
+            |--> É a linguagem para os bancos de dados relacionais (MySQL, PostgreSQL, SQL Server)
+                |-->Trabalhamos com ela criando Queries (INSERT, UPDATE, SELECT)
+                    |--> Com esta linguagem podemos criar e manipular DBs
+
+
+    SQL X MySQL
+
+    --> SQL é a linguagem e MySQL é o SGBD  
+        |--> SGBD é um acronimo de Sistema Gerenciador de Banco de Dados 
+            |--> Ou seja, MySQL é um software que gerencia os nossos banco de dados
+                |-->Enquanto SQL é a liguagem que vamos utilizar para manipular e criar os bancos
+
+
+    O que é um banco de dados? 
+    
+    --> É onde armazenamos os dados no nosso Sistema    
+        |--> Vamos criar os bancos de dados atraves de SQL  
+            |--> E o MySQL vai ajudar-nos a gerenciar o banco e os dados
+                |--> O banco de dados possui algumas entidades fundamentais para o seu correto
+                    funcionamento, como tabelas
+                        |--> As tabelas guardam nossos dados
+
+
+    Principais elementos de um BD 
+
+    --> Diagrama do banco: é o projeto do banco, parte fundamental e mais
+        avançada, que define o sucesso do projeto
+
+     --> Banco de dados: A entidade que vai guardar todos os elementos do banco.
+
+        --> Tabelas: A categoria dos dados.
+
+         --> Colunas: Tipo de informações que precisamos salvar.
+
+            --> Dados: O dado final entregue pelo usuario
+
+
+    
+
+
+
+
+
+
+                
