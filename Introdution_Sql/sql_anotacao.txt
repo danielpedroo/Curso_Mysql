@@ -35,8 +35,44 @@
         --> Tabelas: A categoria dos dados.
 
          --> Colunas: Tipo de informações que precisamos salvar.
-
+ 
             --> Dados: O dado final entregue pelo usuario
+
+
+    Criando um banco de dados
+
+        --> Para criar um banco de dados utilizamos a instrução: CREATE DATABASE ______ (nome do banco);
+            |--> Desta forma agora temos um recipiente onde podemos criar tabelas e inserir dados
+                |--> Example: CREATE DATABASE testeBanco;
+
+    Sintaxe do SQL
+
+        --> A sintaxe e a maneira de como escrevemos instruções 
+            |--> Em sql, por convenção, todas as instruções sao em maiusculos e os  
+                 nomes sao em munisculos (banco, tabela, coluna) example: CREATE DATABASE testebanco;
+        |--> Toda instrução deve ser finalizada com um ponto e virgula (;)
+
+            |--> Alguns SGBDs não exigem ponto e virgula, porem inserir eles em todas as instruções é uma   
+                 maneira de garantir a execução;
+
+    O que é importação de banco ?
+
+        --> importação de banco é quando temos um arquivo pronto de banco (com tabelas e dados) e inserimos
+            ele no nosso SGBD
+            |--> Geralmente originado de uma exportação 
+                |--> Ação simples para obter todos os dados ja cadastrados em um Sistema    
+                    |--> Apos a importação podemos utilizar como se o banco houvesse sido criado na nossa maquina 
+                        |--> É uma pratica comum no dia a dia em uma empresa
+
+    
+
+
+
+
+        
+        
+
+        
 
 
     

@@ -1,0 +1,20 @@
+ Commandos SQL
+
+    Comando de criação{
+  --> CREATE DATABASE ______ (Nome do banco) <-- Este comando cria banco de dados   
+  --> CREATE TABLE ____ (Nome da tabela) <-- Cria a tabela do banco 
+    }
+
+    Comando de seleção{
+  --> USE ____ (Nome do banco) <-- Este comando serve para selecionar o banco 
+  --> SELECT * FROM _______ (Nome da tabela); <-- Este comando projeta (exibe) a tabela;
+    }
+    
+    Comando de exclusão{
+  --> DROP DATABASE ____ (Nome do banco) <-- Este comando serve para deletar o banco    
+  --> DROP TABLE ____ (Nome da tabela) <-- Este comando serve para deletar a tabela
+    }
+
+    Comando de alterar{
+  --> ALTER TABLE _____ (Nome da tabela) <-- Altera a tabela
+    }
