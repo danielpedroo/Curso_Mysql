@@ -1,0 +1,9 @@
+
+  --> CREATE DATABASE ______ (Nome do banco) <-- Este comando cria banco de dados   
+  --> SHOW DATABASE ______ (Nome do banco) <-- Este comando mostra todos os bancos ja criados
+  --> DROP DATABASE ____ (Nome do banco) <-- Este comando serve para deletar o banco    
+  --> mysqldump -u root _____ (Nome do banco) ________ (Nome do arquivo).sql <-- Este comando exporta o banco em um arquivo sql
+        |-> Example: mysqldump -u root empresa > empresa2.sql
+   --> USE ____ (Nome do banco) <-- Este comando serve para selecionar o banco 
+    
+  
