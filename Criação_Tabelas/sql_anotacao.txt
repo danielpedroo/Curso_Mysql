@@ -1,0 +1,82 @@
+ Criação de tabelas
+
+    --> É a entidade responsavel por guardar os nossos dados
+        |--> Possui colunas
+            |--> As colunas sao como categorias dos nossos dados: nome, profissao, idade
+                |--> As colunas posuuem tipos de dados determinados, como: texto, numeros, datas e etc
+                    |--> E atributos: Nao nulo, chave primaria, auto incremento
+
+    Criando e removendoo tabelas
+        --> CREATE TABLE ____ (Nome da tabela) (Colunas, tipo de dado) <-- Cria a tabela do banco 
+            |--> Exaple: CREATE TABLE pessoas (nome VARCHAR (100), cpf CHAR(11) , descricao MEDIUMTEXT);
+
+         --> DROP TABLE ____ (Nome da tabela) <-- Este comando serve para deletar a tabela
+
+
+    Tipos de dados  
+
+        --> Os tipos de dados classificam um dado e os inserimo s em uma coluna 
+            |--> Podemos ter dados como: Texto, data, numero e outros.
+                |--> É uma parte extremamente importante da criação do nosso projeto e banco de dados.
+                    |--> Alguns dados tambem permitem limites serem definidos, como quantidade maxima de caracteres.
+                        |--> São divididos em : texto, numerico, data e especial.
+
+    Tipos de texto  
+
+            CHAR(X): Aceita textos com 0 a 255 caracteres   
+            VARCHAR(X): Aceita textos com 0 a 65535 caracteres onde x e a quantidade maxima 
+            TINYTEXT: Apenas texto com ate 255 caracteres
+            MEDIUMTEXT: Apenas texto com ate 16777215 caracteres
+            
+            OBS: CHAR e VARCHAR aceitam numeros e caracteres especiais
+
+    Inserir dados 
+
+        --> INSERT INTO _____ (Nome da tabela) (colunas) VALUES(valores)<-- Este comando adiciona dados a tabela e suas categorias
+            |---> OBS: VALORES de texto sao inseridos entre aspas   
+                |--> Example: INSERT INTO produtos (nome, sku, informacoes) VALUES ("Xbox series S", "XS", "Video game top");
+
+    Tipos numericos
+
+        --> Os tipos numericos não precisam de aspas ao serem inseridos
+        BIT(X): 1 a 64 caracteres
+        TINYINT(X): 1 a 255 caracteres
+        BOOL: 0 é falso e outros valores sao verdadeiros
+        INT(X): valores ebtre -2147483648 s 2147483647
+
+    Tipos de data 
+
+        --> DATE: Aceita uma data no formato YYYY-MM-DD 
+            DATETIME: Aceita uma data com horario no formato YYYY-MM-DD HH:MM:suas
+            TIMESTAMP: Aceita uma data no formato de DATETIME, porem apenas entre os anos 1970 a 2038
+            As datas tambem inserimos com aspas
+                |--> Example: INSERT INTO registroNacimento (nome, datanascimento) VALUES ("Davi Araujo Pereira", "2023-08-15");
+
+    Porque escolher o tipo de dado?
+
+        --> Devemos sempre escolher o tipo de dado mais proximo da nosa necessidade, e tambem limitar o tamanho quando for possivel 
+            |--> Isso vai otimizar o banco, deixando ele com respostas mais rapidas
+                |--> Alem de economizar espaço em disco, pois estamos salvando apenas o necesario
+                    |--> pense bem antes de realizar a criação das colunas, para escolher o tipo correto e limita-lo
+
+    Alteração de tabelas    
+
+        --> Adição de colunas
+            |--> ALTER TABLE _____ (Nome da tabela) ADD COLUMN (Nome, tipo)
+                |--> Example: ALTER TABLE funcionarios ADD COLUMN profissao VARCHAR(100);
+
+        --> Remoção de colunas  
+            |--> ALTER TABLE ____(Nome da tabela) DROP COLUMN ____ (Nome da coluna)
+                |--> Example: ALTER TABLE funcionarios DROP COLUMN profissao;
+
+        --> Modificar tipo de uma coluna
+            |--> ALTER TABLE _____(Nome da tabela) MODIFY COLUMN _____ (Nome da coluna, tipo de dado)
+                |--> Example: ALTER TABLE funcionarios MODIFY COLUMN Ativo CHAR(3);
+
+
+
+
+
+        
+
+                
