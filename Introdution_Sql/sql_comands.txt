@@ -18,3 +18,7 @@
     Comando de alterar{
   --> ALTER TABLE _____ (Nome da tabela) <-- Altera a tabela
     }
+
+    Comando de inserir dados{
+  --> INSERT INTO _____ (Nome da tabela) (colunas) VALUES(valores)<-- Este comando adiciona dados a tabela e suas categorias
+    }
