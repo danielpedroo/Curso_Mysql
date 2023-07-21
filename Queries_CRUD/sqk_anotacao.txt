@@ -1,0 +1,36 @@
+
+        O que e CRUD ?
+
+        CRUD são as ações que mais sao utilizadas em todas as aplicações
+        
+            CREATE = Criar/ Inserir dados (INSERT)
+            READ = Ler dados (SELECT)
+            UPDATE = Atualizar dados (UPDATE)
+            DELETE = Deletar / remover dados (DELETE)
+
+            Toda aplicação web com banco de dados tem pelo menos uma destas operações e possivelmente todas 
+
+
+        Selecionar todos os dados   
+
+        Para selecionar todos os dados de uma tabela que utilizamos
+
+            SELECT * FROM ____ (Nome da tabela)
+
+                Desta maneira recebemos todas as colunas da tabela e tambem todos os registros
+                    Conforme a base vai crescendo, esa consulta pode ser tornar muito custosa e tambem lenta;
+
+
+        Selecionar colunas especificas
+
+            Para selecionar colunas especificas trocamos o * (all) por o nome das colunas 
+
+                SELECT ____ (Nome da coluna), FROM _____ (Nome da tabela)
+                    Example:  SELECT nome, cpf FROM pessoas;
+
+                    Desta maneira criamos um filtro, deixando nossa consulta um pouco mais leve
+                        Ao longo do curso aprenderemos outras recnincas de otimização de consulta
+
+                            
+
+                
