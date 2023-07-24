@@ -1,0 +1,238 @@
+ A importancia do SELECT
+
+    A maioria das queries em um banco de dados sao de consulta 
+        |--> E e tambem o comando com mais variações 
+            |--> Para receber detalhados resultados, precisamos aprender todo o poder o SELECT
+                |--> Desta maneira filtros avançados e conseguirmos atingir o resultado desejado facilmente
+
+    
+    Operadores 
+
+        Comparação ( >, <, >=, <=, = ): estes Operadores vao filtrar daods baseados nas comporações;
+            |--> BETWEEN: Seleção entre um intervalo
+                |--> LIKE: Seleção por meio de algum padrão
+                    |--> IN: Seleção entre um conjunto de valores esoecificos 
+
+    
+    Clausula WHERE
+
+        O WHERE sera utilizado junto dos operadores vistos da ultima aula
+            |--> Assim conseguimos filtrar os dados de maneira objetiva
+                Example: WHERE id = 10;
+
+                    Example: SELECT * FROM salaries WHERE salary <= 65000;
+
+                    --> Recebemos apenas o resultdao onde o id e 10;
+
+                    
+    Utilizando o DISTINCT
+
+        O DISTINCT vai selecionar apebas as variações de valores    
+            |--> Example: Temos 10 cidades diferenctes de usuarios no sistema, só receberemos 10 resultados
+                |--> O comando é: SELECT DISTINCT ______ (Nome da coluna) FROM ______ (Nome da tabela)
+
+                SELECT DISTINCT dept_name FROM departments;
+                
+                obs: Volta apenas os valores diferentes da coluna selecionada
+
+
+        Operadores Lógicos 
+
+            Podemos combinar a clausula WHERE com operadores como:
+
+                AND : Recebe duad condições, so volta os resultadosque atendem as duas
+
+                OR: Recebe duas condições, volta os resultados que atendem pelo menos uma;
+
+                NOT: Invertemos uma clausula;
+
+            Example: WHERE id > 10 OR salario > 5000;
+
+
+        Utilizando o AND 
+
+            Todos estes operadores lógicos sao muito utilizados na programação
+                |--> Com o AND temos um filtro duplo para resultados    
+                    |--> Por exemplo: WHERE salario > 1000 AND cargo = "programador";
+
+                    Example: SELECT * FROM salaries WHERE salary > 80000 AND from_date > "1991-12-12";
+                
+                        --> No caso acima , apenas programadores com salario maior que 1000
+                            serão retornados no nosso SELECT
+
+        
+        Utilizando o OR 
+
+            O OR tem a possibilidade de retornar qualquer uma das condições impostas;
+
+             Example: WHERE salario > 5000 || profissao = "programador"
+
+                    Neste caso, teremos programadores com salarios menores que 5000 e tambem    
+                        outros tipos de cargos com salarios acima de 5000
+
+
+        Utilizando o NOT
+
+            O NOT inverte uma clausula
+
+            |--> WHERE NOT profissao = "programador";
+
+                Example: SELECT * FROM titles WHERE NOT title = "Staff" AND NOT title = "Senior Engineer";
+
+                |-->Ou sejam, teremos todos os dados retornados, menos os que sao programadores;
+                    |--> pode ser utilizado neste sentido de exclusao de dados
+
+
+        Utilizando a ORDER BY 
+
+            A ORDER BY é uma instrução para ordenação de resultdados ;
+                |--> Podemos utilizar de forma ascendente (ASC)
+                    |--> E descendente (DESC)
+
+                    Utilizado apos o WHERE, se tiver
+                        |--> E baseada em alguma coluna, exemplo:
+
+                        Example: ORDER BY salario ASC;  
+                            |--> Example: SELECT * FROM titles ORDER BY title DESC
+
+        
+        Utilizando a LIMIT 
+
+            A instrução LIMIT é outra forma interessante de limitar os resultados e tornar 
+                a consulta mais rapida 
+
+            Podemos especificar o numero de resultados retornados, exemplo: LIMIT 15;
+                |--> Apenas os  15 primeiros resultadosserão exibidos;
+                    |--> PODEMOS unir com WHERE e outras instruções
+
+                    Example: SELECT * FROM salaries ORDER BY salary DESC LIMIT 10;
+
+
+        Funções no SQL
+
+            Funções são blocos de codigos reaproveitaveis
+                |--> Utilizadas para extrair resultados que demandam muita programação
+                    |--> Temos diversas no SQL, que vão nos ajudar muito nas nossas consultas
+                        |--> Exemplo : a função MAX retorna o maior valor, de uma determinada coluna.
+                            |--> Algo que poderia ser atingido por: SELECT coluna FROM tabela ORDER BY coluna DESC LIMIT 1;
+
+
+        Função MIN 
+
+            A função MIN vai retornar o menor valor de uma coluna especifica
+                |--> Veja o exemplo 
+                    Example: SELECT MIN(salary) FROM salaries;
+
+                        --> Desta maneira vamos receber apenas um resultado, o de menor valor;
+                        
+                        
+         Função MAX
+
+            A função MAXvai retornar o maior valor de uma coluna especifica
+                |--> Veja o exemplo 
+                    Example: SELECT MAX(salary) FROM salaries;
+
+                        --> Desta maneira vamos receber apenas um resultado, o de maior valor;
+
+
+        Função ALIAS
+
+            -> Representado por AS esta query troca o nome da coluna do resultado 
+                |--->  Example: SELECT MAX(salary) AS maior_salario FROM salaries;
+                    |--> Então em ver da coluna ser representa com o nome MAX ela 
+                        Tera o nome maior_salario, por conta do alias AS
+
+            O ALIAS pode servir para renomear uma coluna com nome não objetivo ou colunas originadas 
+                de função, por Example  
+
+                    SELECT SUM(salary) AS soma_salario FROM salaries;
+
+                        Agora a soma dos salarios tem o nome de soma_salario, o que é muito mais objetivo
+                            |--> O AS é utilizado para determinar como a coluna deve se chamar
+
+
+        Função COUNT
+
+            A função COUNT vai retonar o numero de valores que combinam com 
+                algum criterio
+
+                Podemos utlizar com o WHERE 
+                    |--> SELECT COUNT(*) FROM salaries WHERE salary > 100000;
+                        |--> Assim teremos a quantidade de salarios maior que 100k;
+
+
+        Função AVG
+
+            A função AVG  vai retornar a média de uma determinada coluna
+                |--> AVG vem de average (média)
+                    |--> pode utilizar da seguinte maneira  
+                        |--> SELECT AVG(salary) FROM salaries;
+
+                        |--> Example: SELECT AVG(salary) as salario_media FROM salaries;
+
+                            |---> Temos assim a media de salarios
+
+
+        Função SUM
+
+            A função SUM vai retornar a soma de todos os valores de uma coluna;
+                |--> Podemos utilizar da seguinte maneira   
+
+                    SELECT SUM(salary) FROM salaries;
+                        |--> Assim teremos a soma de todos os salarios.
+
+
+        Operador LIKE 
+
+            O LIKE é utilizado sempre em conjunto do WHERE  
+                Ele tem a premissa de filtrar ainda mais nossos resultados  
+                    |--> utilizaos tambem o coringa %, que ajuda muito nas buscas
+
+                        SELECT * FROM employees WHERE first_name LIKE '%ber%';
+
+                            Example: SELECT * FROM titles WHERE title LIKE "%Engineer%";
+                        |--> Desta forma teremos a seleção de todos os nome que contem ber, não 
+                            importa se for no fim ou no começo;
+
+            
+        Operador IN 
+
+                O IN vai fazer uma busca por um conjunto de valores 
+                    |--> SELECT * FROM dept_emp WHERE dept_no IN ('d004', 'd005', 'd006');
+
+                    Example: SELECT * FROM departments WHERE dept_name IN ("Development", "Marketing");
+                
+                --> Desta forma selelcionamos os registros apenas dos departamentos d004, d005 e d006
+
+
+        Operador BETWEEN
+
+            O BETWEEN é parecido com o IN, mas ele vai receber uma faixa de valores
+                -> E o resultado sera retornado baseado nos registros dentro da faixam Veja:
+
+                    --> SELECT * FROM dept_emp WHERE dept_no BETWEEN 'd001' AND 'd008';
+
+                        Example: SELECT * FROM salaries WHERE salary BETWEEN '150000' AND '225000';
+        
+                |--> Neste exemplo retornamos os departamentos de 1 ao 8
+                    |--> O AND utilizado para determinar o intervalo
+
+
+
+
+
+
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
