@@ -1,0 +1,78 @@
+
+        O que e CRUD ?
+
+        CRUD são as ações que mais sao utilizadas em todas as aplicações
+        
+            CREATE = Criar/ Inserir dados (INSERT)
+            READ = Ler dados (SELECT)
+            UPDATE = Atualizar dados (UPDATE)
+            DELETE = Deletar / remover dados (DELETE)
+
+            Toda aplicação web com banco de dados tem pelo menos uma destas operações e possivelmente todas 
+
+
+        Selecionar todos os dados   
+
+        Para selecionar todos os dados de uma tabela que utilizamos
+
+            SELECT * FROM ____ (Nome da tabela)
+
+                Desta maneira recebemos todas as colunas da tabela e tambem todos os registros
+                    Conforme a base vai crescendo, esa consulta pode ser tornar muito custosa e tambem lenta;
+
+
+        Selecionar colunas especificas
+
+            Para selecionar colunas especificas trocamos o * (all) por o nome das colunas 
+
+                SELECT ____ (Nome da coluna), FROM _____ (Nome da tabela)
+                    Example:  SELECT nome, cpf FROM pessoas;
+
+                    Desta maneira criamos um filtro, deixando nossa consulta um pouco mais leve
+                        Ao longo do curso aprenderemos outras técnicas de otimização de consulta
+
+
+        Inserir dados 
+
+            para inseir dados camos utilizar a insrução INSERT  
+
+                INSERT INTO _____ (Nome da tabela) (colunas) VALUES(valores)
+                Example: INSERT INTO pessoas (nome, rg, cpf, limite) VALUES ("Daniel", "1248834581", "436255659861", 11022512174);
+
+
+
+        A importancia do WHERE
+
+            O WHERE é uma cláusula de algumas queries, que determina quias registros vamos atualizar 
+
+                Por exemplo: WHERE id = 1;
+
+                    Example: SELECT * FROM pessoas WHERE nome = "Daniel";
+
+                    Se não inserirmos estas instruções em atuzalização ou remoções, vamos aplicar a todos osdaods, o que pode ser um enorme problema,
+                        Então lembre-se sempre de inseir WHERE em UPDATE e DELETE
+                            
+        
+        Atualizando dados
+            
+            Para atualizar daodos vamos utilizar a instrução UPDATE
+
+                Update _____ (Nome da tabela) SET _____ (Nome da coluna) = Valor WHERE = ______ (Id e e/ou nome do atributo)
+                 Example: UPDATE pessoas SET limite = 2500 WHERE nome = "Daniel";
+                    UPDATE pessoas SET limite = 2500 ,rg = "155879646  WHERE nome = "Daniel"; <-- ("Isto em caso de 2 dados)
+
+
+        Deletar dados 
+
+            Para deletar dados vamos utilizar a instruçõa DELETE
+
+                DELETE FROM ____ (Nome da tabela) WHERE = ______ (condição);
+                    Example: DELETE FROM pessoas WHERE nome = "Daniel";
+
+                    Lembre-se de utilizar o WHERE, se não deletaremos todos os dados
+        
+
+
+                            
+
+                
