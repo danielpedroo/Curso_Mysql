@@ -1,0 +1,118 @@
+        
+        O que sao constraints
+
+            --> sao regras que determinan como os campos serao preenchidos  
+                |--> Por exemplo: NOT NULL = o campo nao pode ser nulo
+                    --> As constraints sao adicionadas na crianção da tabela geraçmente, porem
+                        podemos alterar para adiciona-las
+
+                        --> Estas regras sao de grande utilidade pois ajudam a organizar e padronizar 
+                            nosso projeto
+
+        
+        NOT NULL    
+
+            |--> A constraint NOT NULL força um valor de uma coluna especifica nao ser  
+                nulo
+
+            |--> Colocamos a instrução apos o nome e tipo da coluna ser declarado: 
+            
+            nome VARCHAR(100) NOT NULL;
+
+                --> Desta maneira a coluna recebe a constraint
+
+        
+        UNIQUE
+
+            |--> A constraint UNIQUE garante que todos valores em uma coluna serao diferentes
+                --> Um caso de uso é o e-mail, nao queremos e-mails duplicados na nossa base
+
+                    Example: ALTER TABLE pessoas ADD COLUMN email VARCHAR(255) UNIQUE;
+                        Aqui eu apenas alterei a tabela, mas antes de criala e so colocar a query UNIQUE
+                            que o valor passara a ser unico como no exemplo descrito    
+
+                    |--> desta maneira, recebemos um erro caso o dado ja tenha sido inserido
+
+
+        Primary Key
+
+            |--> A constraint Primary Key só pode ser adicionada em uma unica coluna da tabela, geralmente é o id;
+                --> O valor deve ser unico e nao pode ser nulo  
+                    --> Podemos dizer que é um identificador unico de um registro na tabela
+
+
+        Auto Increment
+
+            |--> A constraint Auto Increment serve para adicionar a quantidade de um todo registro adicionado   
+                --> esta constraint é muito utilizada na coluna id, já que e unica e tambem chave primaria
+
+                Example: CREATE TABLE frutas (
+                                              id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+                                              nome VARCHAR(100)
+                                               );
+
+                    Então nao precisamos nos preocupar com este valor no INSERT
+
+
+        Foreing Key
+
+            |--> A Foreing Key é uma ligação de uma tabela a outra 
+
+                Por exemplo: uma tabela cadastramos o usuario e em outra o endereço delete
+                Na tabela do endereço temos uma Foreing Key que se refere ao id do usuario  
+                Deste maneira conseguimos impedir remoções de dados que tem ligação entre tabelas
+
+                Example: 
+
+                 CREATE TABLE pessoas (
+                    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+                    nome VARCHAR(100) NOT NULL,
+                    idade INT
+                    
+                );
+
+                CREATE TABLE enderecos (
+                    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+                    rua VARCHAR (100),
+                    numero VARCHAR(10),
+                    pessoa_id INT NOT NULL,
+                    FOREIGN KEY (pessoa_id) REFERENCES pessoas(id)
+                );
+
+                OBS: em caso de DROP de alguma tabela referenciada, e necessario excluir a 
+                    conexao feita por exemplo o pessoa_id e apos isso pode ser excluido e/ou
+                    atualizado a tabela de pessoas
+
+
+        Index
+
+            --> Adicionar um indice a uma coluna faz a consulta que envolva a mesma se tornar mais rapida
+                |--> Sem indice a consulta começa da primeira a ultima coluna ate encontrar
+                     que voce precisa, com o indice as demais serao ignoradas   
+                
+                Example: CREATE INDEX index_nome
+                ON pessoas(nome);
+
+                |--> As consultas que sao melhoradas pelo INDEX sao as com WHERE
+                    |--> adicionar o index quando for percebido que a tabela demora para retornar dados 
+                        e se e necessario adcionar o index otimiza a consulta, deixa ela mais rapida.
+
+
+        Drop Index
+
+            --> Pode chegar um momento que um indice nao é mais necessario, entao precisamos    
+                remover ele
+                    LEMBRANDO QUE O EXCESSO DE INDICE pode ser PREJUDICIAL ou fazer com que os indices 
+                    necessarios nao funcionem correntamente
+
+                    Example: DROP INDEX _______ (nome do indice) ON  ______<-- tabela (atributo) <-- nome da tabela e do atributo
+                             |--> DROP INDEX index_nome ON pessoas;
+
+                             
+
+
+
+
+
+
+            
