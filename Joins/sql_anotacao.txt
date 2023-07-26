@@ -1,0 +1,69 @@
+    
+        Joins 
+
+        --> São consultas que envolvem duas ou mais tabelas;
+            |--> As tabelas geralmente possuem relação entre si
+                |--> Temos então uma consulta mais complexa e com mais dados
+                    |--> Ha Tres tipos mais utilizados de Joins 
+                        --> LEFT
+                            RIGHT
+                            INNER
+
+
+        INNER JOIN 
+
+            O INNER JOIN vai resultar nas colunas que fazem relação entre tabelas   
+                |--> Podemos determinar qual coluna regatar apos a instrução SELECT
+                    |--> Utilizamos a intrução ON para determinar as colunas que precisam ser iguais 
+
+                    Example: SELECT employees.first_name, employees.last_name, salaries.salary
+                            FROM employees
+                            INNER JOIN salaries
+                            ON employees.emp_no = salaries.emp_no;
+
+                            SELECT ______ (NOME DAS COLUNAS E A COLUNA QUE SERA ATRIBUIDA E/OU SERA FEITA A JUNCAO)
+                            FROM ______ (NOME DA TABELA QUE POSSUI A CHAVE PRIMARIA "NAO A TABELA QUE RECEBE A CHAVE")
+                            INNER JOIN ______ (NOME DA TABELA QUE RECEBE A CHAVE ESTRAGEIRA)
+                            ON _________ = ________ (NOME DAS CHAVES, PRIMARIA E ESTRANGEIRA)
+                                                        
+                    Task:   SELECT employees.first_name as Nome, employees.last_name as Sobrenome , employees.gender as Genero, titles.title as Cargo
+                            FROM employees
+                            INNER JOIN titles
+                            ON employees.emp_no = titles.emp_no
+                            WHERE employees.gender = "M"
+                            ORDER BY cargo ASC;       
+
+
+        LEFT JOIN    
+
+            |--> O LEFT JOIN vai retornar os dados da tabela da esquerda e os necessarios da direita
+                |--> Tambem e chamado de LEFT OUTER JOIN    
+                    |--> Havera dados retornados da tabela da esquerda mesmo se nao corresponder com a outra    
+
+                    Example:    SELECT pessoas.nome, enderecos.*
+                                FROM pessoas
+                                LEFT JOIN enderecos
+                                ON pessoas.id = enderecos.pessoa_id;       
+
+                                    OBS: o LEFT JOIN traz os dados, mesmo que sejam nulos
+                                         e/ou que nao tenhao relação, diferente do INNER JOIN   
+                                         que so traz aqueles que ja possuem a relação
+
+
+        RIGHT JOIN
+
+            |--> O RIGHT JOIN é semelhante ao LEFT, porem ele traz as colunas a mais da direita
+                |--> Chamado tambem de RIGHT OUTER JOIN
+
+
+        INNER JOIN de mais de uma tabela 
+
+            Example: SELECT employees.first_name as Nome, salaries.salary as salario, titles.title as titulo
+                    FROM employees
+                    INNER JOIN salaries
+                    ON employees.emp_no = salaries.emp_no
+                    INNER JOIN titles
+                    ON employees.emp_no = titles.emp_no;
+
+
+                    
