@@ -1,0 +1,128 @@
+
+        Agrupamentos e subquery
+
+         UNION 
+        
+            --> É utilizado para combinar o resultado de dois ou mais SELECTS
+                --> As colunas precisam ter o mesmo nome
+                    --> Os resultados serao agregados em uma coluna so, porem podemos selecionar mais de uma coluna por vez 
+                        --> Nao pode trazer resultados duplicados
+            
+
+            Example: UNION ALL
+
+                O UNION ALL é utilizado para combinar o resultado de dois ou mais SELECTS
+                    --> As colunas precisam ter o mesmo nome    
+                        --> Os resultados serão agregados em uma coluna so, porem podemos selecionar  
+                            mais de uma coluna por vez...
+
+                        OBS: Pode trazer resultados duplicados
+                        Example:     SELECT dept_no as departamento FROM departments
+                                        UNION ALL SELECT dept_no
+                                        FROM dept_emp
+                                        ORDER BY departamento DESC;
+
+            
+            Group by
+
+                O Group by serve para agruparmos colunas e checarmos quantidades de determinados elementos 
+                    Por ex: quantos programadores ou designer existem no nosso banco;
+                    
+                --> Então agrupamos as colunas somando elas e temos o resultado de grupos 
+
+                |--> Example: SELECT hire_date, COUNT(hire_date) AS "Colaboradores contratados no mesmo dia" FROM employees GROUP BY hire_date; 
+
+
+            HAVING 
+
+            O HAVING é semelhante ao WHERE 
+
+                --> Porem vamos utilizar eles com aggregate functions (SUM, AVG, GROUP BY)
+                    |-->pois o WHERE nao pode ser utilizado nestes casos
+                        |--> Então sempre que estamos utilizando uma destas funções de agregação de 
+                            dados , precisamos optar pelo HAVING
+
+                            Example: SELECT title, COUNT(title) AS 'titulos'
+                                     FROM titles
+                                     GROUP BY title	
+                                     HAVING COUNT(title) > 100000;
+
+            OBS: Quando a propriedade Group by estiver presente e for necessario utilizar uma função    
+                 não use o where, o where serve apenas para buscar um dado, coluna especifico, contudo
+                 utilize um "parente" do where, o HAVING que funciona com funções e com isto pode trazer 
+                 dados mais rapidos
+
+
+            Subquery 
+
+            --> Subquery é uma query dentro de outas query  
+                --> Teremos mais comumente dois SELECT'S
+                    --> A subquery em alguns casos se aprece muito com um join,
+                        --> Porem as vezes precisamos de algo muito especifico, então fazer uma 
+                            subconsulta pode se tornar mais pratico do que um join
+
+                            Example: SELECT emp_no, first_name AS Nome, (
+                                        SELECT SUM(salary)
+                                        FROM salaries
+                                        WHERE employees.emp_no = salaries.emp_no
+                                    ) AS soma_Salario
+                                    FROM employees
+                                    ORDER BY emp_no DESC;
+
+            
+            EXISTS
+
+                O EXISTS serve para checar se existe algum registro em alguma Subquery
+                    |--> Desta maneira podemos retornar resultados, apenas se existir algum fato;
+
+                    Example: SELECT emp_no, first_name, last_name, (
+                               SELECT SUM(salary)
+                                FROM  salaries
+                                 WHERE employees.emp_no = salaries.emp_no
+                                )as soma_salario
+                                 FROM  employees
+                                 WHERE exists(
+                                SELECT (salary)
+                                 FROM  salaries
+                               WHERE employees.emp_no = salaries.emp_no
+                                HAVING SUM(salary) > 1000000
+                                );
+
+            
+            ANY
+
+                O ANY vai retornar os resultados que recebem TRUE da subquery
+                    |--> Por meio de uma subquery receberemos apenas os resultados que condizem a uma condição
+                        |--> Ou seja: se queremos os nomes de quem ganha mais de 150000, só receberemos nomes se alguem ganhar mais que 150000;
+
+                        Example: SELECT first_name
+                                    FROM employees
+                                    WHERE emp_no = ANY (
+                                        SELECT emp_no
+                                        FROM salaries
+                                        WHERE salary > 150000
+                                        );
+
+            
+            Comentarios  
+
+                Os comentarios são utilizados por duas razões 
+                    |--> Escrever Instruções do que o codigo executa 
+                        |--> Ou impedir a execução de um codigo, pois o interpretador ignora codigo comentado
+                            |--> Para comentario em um linha o simbolo : --
+
+                            Example:  -- Teste
+
+
+            Comentarios de multiplas linhas 
+
+                OS comentarios de SQL tambem podem ser escritos em varias linhas 
+                    |--> A sintaxe é: /* algum texto */
+                        |--> Onde esta maneira  tambem funciona para uma linha somente 
+
+
+
+
+
+
+                    
