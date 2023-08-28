@@ -1,0 +1,64 @@
+ funções de Numbers
+
+
+    CEIL
+
+        --> A função CEIL arredonda numeros com casas decimais para cima 
+            Ou seja: 25.8 > 26
+                Vamos utilizar apenas o numero/coluna como argumento
+                    CEIL(<numero>)
+
+            Example: SELECT amount, CEIL(amount) FROM payment;  
+                Obs: Este comando arredonda automaticamente o numero
+
+    
+    COUNT
+
+        --> Obs: Ja utilizamos COUNT antes
+            |--> A função COUNT conta o numero de ocorrencias de uma determinada coluna 
+
+                COUNT(<coluna>)
+                    |--> Ideal para saber o numero de registros em uma tabela
+
+                    Example: SELECT COUNT(*) FROM category;
+                    Obs: Traz o numero de registros de uma tabela, apenas
+                         registros.
+
+
+    FLOOR
+
+        --> A função FLOOR arredonda numeros  com casas decimais para baixo Ou seja: 25.8 > 25
+            |--> Vamos utilizar apenas o numero/coluna como argumento    
+                
+                Example: SELECT amount, FLOOR(amount)AS paraBaixo, CEIL(amount) AS paraCima FROM payment; 
+                Obs: Esta query e ao contrario de CEIL, ele arredonda para baixo.
+
+    
+    MAX 
+        --> A Função MAX retorna o maior valor de uma coluna 
+            |--> Apenas passamos a coluna como argumento    
+
+                MAX(<coluna>)
+
+            Example SELECT MAX(amount) AS maiorValor FROM payment;
+
+
+    MIN 
+
+        --> A função MIN retorna o menor valor de uma coluna 
+            |--> Apenas passamos a coluna como argumento    
+
+                MIN(<coluna>)
+
+            Example:  SELECT MIN(idade) AS menorValor FROM funcionarios;
+            
+
+    SUM 
+        --> A função SUM retorna a soma dos valores de uma coluna 
+            Apenas passando a coluna como argumento
+
+                    SUM(<coluna>)
+    
+            Example: SELECT SUM(amount) AS soma_Pagamentos FROM payment;
+                Obs: Esta query faz a soma totoal da columa;
+    
