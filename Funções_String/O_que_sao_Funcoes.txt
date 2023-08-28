@@ -1,0 +1,133 @@
+O que são funções
+    
+    --> As funções são blocos de codigos já definidos que podem ser reutilizados 
+        --> Assim como a maioria das linguagens de programação já possuem funções prontas, o SQL tambem
+            --> Elas nos ajudam a atingit resultados de forma simples, que com apenas queries seriam atingidos de forma complicada
+                --> E tambem permitem a reutilização das mesmas;
+
+
+    CHAR_LENGHT
+
+        --> A função CHAR_LENGHT nos retorna o numero de caracteres de uma string de uma determinada coluna 
+            --> Ela leve um argumento que é a coluna que vamos avaliar 
+
+                Example: CHAR_LENGHT(nome da coluna)
+
+                SELECT first_name, CHAR_LENGTH(first_name) AS qtd_chars FROM actor;
+                SELECT (nome da coluna), CHAR_LENGTH(nome da coluna) AS qtd_chars FROM (nome da tabela)
+
+
+    CONCAT 
+
+        --> A função CONCAT concatena duas ou mais strings 
+            |--> Concatenar significa unir strings
+
+            CONCAT("MySql", "e", "bom")
+
+            Example: SELECT CONCAT(nome, " tem ", idade, " idade ") AS nome_Idade FROM FUNCIONARIOS;
+
+        
+    CONCAT_WS
+
+        --> A função CONCAT_WS concatena duas ou mais strings, porem com um separador comum 
+            |--> O primeiro argumento é um separador
+
+                CONCAT_WS("-", "MySql", "e", "bom")
+
+             Example: SELECT CONCAT_WS(",", nome, idade) AS Nomes FROM funcionarios;
+
+    
+    FORMAT 
+
+        --> A função FORMAT vai formatar um numero com u numero de casas determinado por argumentos
+            |--> Alem disso, em alguns casos pode ate arredondar o numero
+
+                FORMAT(numero, 2)
+                    |--> Formata o numero com 2 casas decimais;
+
+                    Example:  SELECT customer_id, FORMAT(amount, 1) as casas_Arrendondadas FROM payment;
+
+                      OBS: O format serve apenas para questão de numeros.
+
+            
+    INSTR
+
+        --> A função INSTR retorna a posição de caractere ou string que estamos buscando em uma outra string    
+
+                INSTR(<string>, "a");
+                    |--> retorna a posição da letra a na string alvo
+
+
+                Example: SELECT email, INSTR (email, "@") FROM customer;
+                OBS: seleciona a posição da String.
+
+
+    LCASE
+
+        --> A função LCASE transforma todo o texto retornado para lower case, ou seja, letras minusculas
+
+            LCASE("ALGUM TEXTO")
+    
+            Example 01: SELECT email, LCASE(email) AS email_LowerCase FROM customer;
+    
+             Example 02: SELECT first_name, last_name, LCASE(CONCAT(first_name, " ", last_name)) AS nome_Completo FROM customer;
+
+    
+    LEFT 
+
+        --> A função LEFT extrai uma quantidade de caracteres de uma string 
+            |--> A extração acontece da esquerda pra direita
+
+            E a quantidade é passada por paramentro
+
+            LEFT(<string>, 5);
+
+            Example: SELECT title, LEFT(title, 8) AS Extrair FROM film WHERE film_id = 1;
+
+            Obs: Ele seleciona a quantidade de caracteres que desejar... a quantidade de parametros
+                 definira a quantidade a ser extraida;
+
+
+    REPLACE
+
+        --> A função REPLACE troca alguma parte de uma string por outra enviada por paramentro
+
+                REPLACE(<texto>, <antigo>, <novo>)
+                    |--> Desta forma podemos fazer manipulações nos valores retornados
+
+                SELECT REPLACE(name, "Action", "Action & Adventure") AS troca_String FROM category;
+                Obs: Este comando troca nome atual do dado por um novo;
+
+
+    RIGHT
+
+        --> A função RIGHT extrai caracteres da direita para a esquerda 
+            |--> O numero de caracteres é determinado pelo argumento da função   
+
+                    RIGHT(<texto>, 10)
+                    Obs: Neste caso teremos uma extração de 10 caracteres da direita para esquerda;
+
+                Example SELECT RIGHT(last_update, 8) AS HORARIO FROM category;
+
+
+    SUBSTR
+
+        -->  A função SUBSTR extrai uma string a partir de dois indices, inicio e film  
+            |--> Os indices sao passados via argumento  
+
+                    SUBSTR(<texto>, <inicio>, <fim>)
+
+                    Example: 	SELECT last_update, SUBSTR(last_update, 9, 2) AS Dia,
+                                SUBSTR(last_update, 6, 2 ) As Mês,
+                                SUBSTR(last_update, 1, 4 ) As Ano
+                                FROM actor;
+
+    
+    Ucase 
+
+        --> A função UCASE vai transformar todas as letras em maiusculas
+            |--> É o contrario de LCASE
+
+                UCASE(<string>)
+
+                Example SELECT UCASE(country) AS Paises FROM country;
