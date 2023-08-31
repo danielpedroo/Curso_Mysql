@@ -1,0 +1,127 @@
+        Funções de Datas
+
+        ADDDATE
+
+        --> A função ADDDATE adiciona ou remove uma quantidade de horas, dias, meses, ou anos a uma Datas
+            |--> Utilizamos da seguinte forma: 
+
+        ADDDATE(<coluna>,<data para adicionar>)
+
+            Desta forma teremos uma nova data na seleção dos dados.
+
+            Example: SELECT last_update, ADDDATE(last_update, "5 DAYS") AS adc_Date_Days,
+                     ADDDATE(last_update, INTERVAL 2 MONTH) AS adc_Date_Mounts,
+                     ADDDATE(last_update, INTERVAL -3 YEAR) AS adc_Date_Year FROM actor;
+
+        
+        DATEDIFF 
+
+        --> A função DATEDIFF calcula a diferença de duas datas 
+            |--> O valor é informado em dias    
+                |--> Vamos utilizar desta maneira 
+
+                DATEDIFF(<data1>, <data2>);
+                    |--> Desta maneira sera exibido o valor da diferença
+
+           Example: SELECT DATEDIFF("2014-12-2", last_update) AS diferenca_Date FROM actor;
+                    Obs: Desta forma o comando retorna a diferença em dias 
+
+                    SELECT DATEDIFF(last_update, ADDDATE(last_update, INTERVAL -2 YEAR)) 
+                    AS diferenca_Date FROM actor;
+
+                    Obs: Sempre manter o maior primeiro, pois ai tera certeza do resultado,
+                      SELECT DATEDIFF(last_update <-- AQUI TERA QUE SER MAIOR,
+                      ADDDATE(last_update, INTERVAL -2 YEAR)) <-- AQUI TERA DE SER O MENOR
+                      AS diferenca_Date FROM actor; 
+
+
+        ADDTIME 
+
+        --> A função ADDTIME adiciona ou remove um tempo a uma data 
+            |--> Podemos utilizar o formato: yyyy-mm-dd hh:mm:ss;
+                Exemplo:
+
+                ADDTIME(<coluna>, <tempo>)
+                    |--> Deta maneira a data final sera modificada
+
+            Example: SELECT *, ADDTIME(last_update, "03:00:00") AS adc_Date_Time FROM actor;
+
+
+        DATE_FORMAT
+
+        --> A função DATEFORMAT formata uma data com um padrao indicado 
+            Exemplo de utilização
+
+            DATE_FORMAT(<data>, <formato>)
+                |-->  Se utilizamos %Y, recebemos o nao completo.
+
+                Example: SELECT *, DATE_FORMAT(last_update, "%Y") AS adc_Date_Format FROM actor;
+
+                SELECT *, DATE_FORMAT(last_update, "%d/%m/%Y") AS adc_Date_Format
+                 FROM actor WHERE actor_id = 20; (Exemplo de dia/mes/ano - padrao Brasileiro)
+
+                %Y = ANO
+                %M = MES 
+                %D = DIA 
+
+        
+        DAY 
+
+        --> A função DAY retorna o dia da data utilizada na função  
+
+            DAY(<data>)
+                Desta maneira teremos o numero do dia, como: 15
+
+            Example: SELECT *, DAY(last_update) AS adc_Day FROM actor;
+
+
+        DAYOFWEEK
+
+        --> A função DAYOFWEEK retorna o dia da semana de uma determinada data
+
+            DAYOFWEEK = Dia da semana 
+
+            DAYOFWEEK(<data>)
+                |--> Iniciando de domingo como 1 a 7 sabado
+
+            Example: SELECT *, DAYOFWEEK(last_update) AS adc_Day FROM actor;
+
+
+        DAYOFYEAR
+
+        --> A função DAYOFYEAR retona o dia do ano de uma determinada data  
+
+                DAYOFYEAR(<data>)
+                    |--> O retorno e de 1 a 365
+
+            Example SELECT *, DAYOFYEAR(last_update) AS adc_Day FROM actor;
+
+
+        WEEKOFYEAR
+
+        --> A função WEEKOFYEAR retona a semana do ano de uma determinada data 
+
+             WEEKOFYEAR(<data>);
+                |--> O retorno e de 1 a 42
+
+            Example SELECT *, WEEKOFYEAR(last_update) AS adc_Day FROM actor;
+
+
+        MONTH
+
+        --> A função MONTH extrai o mes de uma data 
+
+                MONTH(<data>);
+                    |--> O retorno e de 1 a 12
+
+             Example: SELECT *, MONTH(last_update) FROM actor;
+        
+
+        YEAR
+        
+        --> A função YEAR extrai o ano de uma determinada data  
+
+                YEAR(<data>);
+                    |--> Assim obteremos de maneira facil o ano;
+
+          Example: SELECT *, YEAR(last_update) FROM actor;
