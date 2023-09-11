@@ -1,0 +1,15 @@
+Planejamento de banco de dados
+
+    (Database Design)
+
+    -->  Aplicações que tem o desenho do banco ja iniciam com outra
+        documentação
+
+    --> E ainda uma organização previa,
+     que dita as regras do sistema e como ele funciona
+    
+        |--> O relacionamento entre entidades tambem e previsto
+            --> Erros podem ser resolvidos antes de acontecerem no codigo ou ainda 
+                antecipação de problemas da propria regra de negócios;
+
+            
