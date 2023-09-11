@@ -1,0 +1,181 @@
+        Relações das tabelas
+
+        --> O que são relacionamentos 
+
+            --> SQL é uma linguagem de banco de dados relacionais, ou seja, que possuem relações 
+            
+            --> Estas relações servem para a SEPARAÇÃO DE RESPONSABILIDADE DE TABELAS, 
+            ex: cadastro, endereço, pedidos
+
+            |-->  Há um link entre tabelas, que soa as FOREING KEYS (FKs)
+                |--> E ha tambem varios tipos de relacionamentos: 
+
+                    °Um para um
+                    °Um para muito
+                    °muitos para muitos
+
+
+        --> Tipos de ralacionamento
+
+        |-->  One to One (um para um) --> Quando uma tabela possui uma conexão com outra e vice-versa
+
+        |--> One to Many (um para muitos): QUnado uma tabela possui diversos registros em outra, porem a segunda so 
+            pode possuir uma conexão    
+
+        |--> Many to Many (muitos para muitos): Qunado duas tabelas podem ter conexões com diversos registros   
+            entre eleas
+        
+
+        --> One to One
+
+            |--> Com esse relacionamento teremos no maximo um registro ligado a outro
+                
+                Exemplo: ESTUDANTE X INFORMAÇÕES DE CONTATO;
+
+            |--> Cada estudante pode ter apenas uma informação de contato e a informação de contato
+             é apenas daquele estudante
+
+            |--> A estrutura é feita por duas tabelas ligadas por uma FOREING KEY 
+
+                
+            Example:  
+            CREATE DATABASE relacoes;
+                USE relacoes;
+
+                CREATE TABLE estudantes (
+                        id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+                        nome VARCHAR(100),
+                        turma VARCHAR(5)
+                        );
+                
+                CREATE TABLE contatos(
+                    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+                    telefone VARCHAR (20),
+                    estudante_id INT NOT NULL,
+                    FOREIGN KEY (estudante_id) REFERENCES estudantes(id)
+                );
+
+                    INSERT INTO estudantes (nome, turma) VALUES ("Daniel Pedro", "1L");
+                    INSERT INTO estudantes (nome, turma) VALUES ("Beatriz Ribeiro", "1L");
+                    SELECT * FROM estudantes;
+                    
+                    INSERT INTO contatos (telefone, estudante_id) VALUES ("11-985632448", 1);
+                    INSERT INTO contatos (telefone, estudante_id) VALUES ("11-972132338", 2);
+                    SELECT * FROM contatos;
+                    
+                    
+                    SELECT estudantes.nome AS nome_Aluno, estudantes.turma AS turma_Aluno, 
+                    contatos.telefone AS contato_Aluno 
+                    FROM estudantes
+                    INNER JOIN contatos 
+                    ON contatos.estudante_id = estudante_id;
+		
+
+            One to Many
+
+
+            --> Com este relacionamento teremos uma tablea que possui varios relacionamentos com outra
+            mas o inverso nao ocorre
+
+                Example: Cliente x produto
+
+            |--> Um cliente pode ter diversos pedidos na loja, porem um pedido é de um unico cliente
+                |--> Semelehante ao one to one, porem A SEGUNDA TABELA TEM DIVERSOS REGISTROS LIGADOS 
+                A UM NA OUTRA 
+
+                Example: CREATE TABLE clientes (
+                            id INT PRIMARY KEY AUTO_INCREMENT NOT NULL, 
+                            nome VARCHAR (100),
+                            data_nascimento DATE
+                            );
+                            
+                            CREATE TABLE pedidos (
+                            id INT PRIMARY KEY AUTO_INCREMENT NOT NULL, 
+                            qtd_itens INT (10),
+                            total FLOAT,
+                            cliente_id INT NOT NULL,
+                            FOREIGN KEY (cliente_id) REFERENCES clientes(id) 
+                            );
+                            
+                            INSERT INTO clientes (nome, data_nascimento) VALUES ("Daniel" , "2003-05-13");
+                            INSERT INTO clientes (nome, data_nascimento) VALUES ("Beatriz" , "2003-06-27");
+                            
+                            -- Cliente 1
+                            INSERT INTO pedidos (qtd_itens, total, cliente_id) VALUES (1 , 139.42, 1);
+                            INSERT INTO pedidos (qtd_itens, total, cliente_id) VALUES (2 , 240.00, 1);
+                            INSERT INTO pedidos (qtd_itens, total, cliente_id) VALUES (2 , 790.00, 1);
+                            
+                            -- Cliente 2
+                            INSERT INTO pedidos (qtd_itens, total, cliente_id) VALUES (1 , 500.42, 2);
+                            INSERT INTO pedidos (qtd_itens, total, cliente_id) VALUES (2 , 120.00, 2);
+                            INSERT INTO pedidos (qtd_itens, total, cliente_id) VALUES (2 , 50.00, 2);
+                            SELECT * FROM pedidos;
+                            
+                            SELECT clientes.nome AS nome_Cliente, pedidos.id AS pedidos_Cliente, 
+                            pedidos.total AS total_Compra
+                            FROM clientes
+                            INNER JOIN pedidos
+                            ON pedidos.cliente_id = clientes.id
+                            WHERE clientes.id = 1;
+
+                    
+                Many to Many
+
+                    --> No Many to Many as duas tabelas tem multiplas relações entre si, 
+
+                        Example: Alunos X Materias
+
+                            Um aluno pode estar fazendo diversas materias diferentes e uma materia 
+                            pode ter diversos alunos matriculados
+
+                            Normalmente este recursao usa uma pivot table 
+                                |--> Onde esta serve apenas para conter relações entre tabelas 
+
+                Example: CREATE TABLE materias (
+                            id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+                            nome VARCHAR (100)
+                        );
+
+                        CREATE TABLE estudante_materia (
+                            estudante_id INT NOT NULL,
+                            materia_id INT NOT NULL,
+                            FOREIGN KEY (estudante_id) REFERENCES estudantes(id),
+                            FOREIGN KEY (materia_id) REFERENCES materias(id)
+                        );
+
+                            INSERT INTO materias (nome) VALUES ("Gestão de projetos");
+                            INSERT INTO materias (nome) VALUES ("Ética e responsabilidade profissional");
+                            INSERT INTO materias (nome) VALUES ("Topicos especiais");
+                            SELECT * FROM materias;
+                            
+                            INSERT INTO estudantes (nome, turma) VALUES ("Renato", "3A");
+                            INSERT INTO estudantes (nome, turma) VALUES ("Breno", "3B");
+                            INSERT INTO estudantes (nome, turma) VALUES ("Amanda, 2I");
+                            SELECT * FROM estudantes;
+                            
+                            -- Estudante 1
+                            INSERT INTO estudante_materia (estudante_id, materia_id) VALUES (1 , 1);
+                            INSERT INTO estudante_materia (estudante_id, materia_id) VALUES (1 , 2);
+                            INSERT INTO estudante_materia (estudante_id, materia_id) VALUES (1 , 3);
+                            
+                            -- Estudante 2
+                            INSERT INTO estudante_materia (estudante_id, materia_id) VALUES (2 , 1);
+                            INSERT INTO estudante_materia (estudante_id, materia_id) VALUES (2 , 2);
+                            INSERT INTO estudante_materia (estudante_id, materia_id) VALUES (2 , 3);
+                            
+                            -- Estudante 3
+                            INSERT INTO estudante_materia (estudante_id, materia_id) VALUES (3 , 2);
+                            
+                            -- Estudante 4
+                            INSERT INTO estudante_materia (estudante_id, materia_id) VALUES (4, 3);
+                            
+                            SELECT * FROM estudante_materia;
+                            
+                            SELECT *, estudante_materia.materia_id AS "Gestão de projetos" FROM estudantes
+                            INNER JOIN estudante_materia
+                            ON estudante_materia.estudante_id = estudantes.id
+                            AND estudante_materia.materia_id = 1;
+
+
+                
+                
