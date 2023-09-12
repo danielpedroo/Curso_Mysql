@@ -12,4 +12,36 @@ Planejamento de banco de dados
             --> Erros podem ser resolvidos antes de acontecerem no codigo ou ainda 
                 antecipação de problemas da propria regra de negócios;
 
-            
+
+            Analise de requisitos
+
+        --> É o Planejamento e a definição do sistema 
+            |--> Onde como o sistema deve funcionar é apresentado ou uma conversa com quem precisa      
+                 do sistema e feita;
+                 |--> Com base nestes dados e descrições vamos planejar o banco de dados    
+                 |--> Temos um ponto de contato com a parte não tecnica e tecnica
+                --> Aqui tambem podem ser relatadas dificuldades tecnicas e criam-se 
+                    alternativas para possiveis problemas.
+
+
+           Normalização
+
+        --> É dividida em diversos niveis , algumas das premissas sao:
+            |--> Colocar chave primaria na tabela 
+                |--> 1 FN - Colunas guardam um unico valor (atomicidade)
+                |--> 2 FN - Colunas que nao pertencem ao topico central da tabela, devem virar um outra tabela.
+                |--: 3 FN - Deixar no banco de dados apenas valores que nao sao dependentes de outros, devem ir 
+                            p/ outras camadas a responsabilidade.      
+        
+
+            Diagrama de entidades relacionais 
+
+        --> É um quadro onde se definem as tabelas e as relações entre si;;
+            --> Deixando o banco de dados visual a todos da equipe
+                --> Utilizado tambem os tipos de dados da mesma 
+
+            --> Com este diagrama pronto o desenvolvimento da aplicação e o entendimento do projeto
+                tornam-se mais rapidos.
+
+
+        
