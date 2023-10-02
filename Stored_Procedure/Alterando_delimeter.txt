@@ -1,0 +1,12 @@
+        Alterando o DELIMETER 
+
+        --> Normalmente utilizamos o delimitador o ";"
+            Cada final de query adicionamos, para que o mySQL entenda o fim da query
+
+            Para utlizar procedures precisamos modificar o delimiter padrão    
+
+            --> Exemplo: 
+
+            DELIMITER $$
+            --> O delimiter, ele serve apenas para trocar o delimitador padrao que no caso e o ponto e virgula (";")
+                Contudo, utilizar // e/ou $$ sao delimitadores de uma procedure, contudo e muito mais viavel usar $$                                                                                                                   

@@ -1,0 +1,7 @@
+    Listando Procedures
+
+        Podemos checar as Procedures que estao criandas no nosso sistema
+            --> O comando é SHOW PROCEDURE STATUS
+                --> Ele exibe alguns detalhes importantes sobre nossas Procedures
+
+                    eX: SHOW PROCEDURE STATUS //

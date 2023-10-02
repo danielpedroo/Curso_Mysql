@@ -1,0 +1,6 @@
+    Verificando dados de uma procedure
+
+        --> Podemos analisar como uma procedure foi criada, ou seja , a query base dela;
+            --> O comando é: SHOW CREATE PROCEDURE <nome> (nome da procedure);
+
+                Ex: SHOW CREATE PROCEDURE FullName//

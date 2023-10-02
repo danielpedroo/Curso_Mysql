@@ -1,0 +1,15 @@
+
+            Procedure com parametros
+
+                Precisamos colocar os parametros apos o nome da Procedure, como se foseem parametros de função
+                    Definimos o seu tipo  tambem (VARCHAR, INT e etc);
+                        Na hora de chamar a Procedure, precisamos pasar o valor do parametros   
+                            Isso deixas as procedures dinamicas
+
+                         Ex:                             
+                                CREATE PROCEDURE maioresSalarios(IN valor DOUBLE)
+                                    BEGIN 
+                                        SELECT salary AS Salarios_Maiores FROM salaries WHERE salary >= valor;
+                                    END//
+
+                                    CALL maioresSalarios (80000)//

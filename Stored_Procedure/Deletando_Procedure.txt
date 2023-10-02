@@ -1,0 +1,7 @@
+    Deletando Procedures
+
+        Podemos tambem excluir procedures do sistema;
+            --> DROP PROCEDURE <nome> <-- (Nome da procedure)
+                --> Depois da execução a mesma nao estara mais disponivel
+
+                Exemplo: DROP PROCEDURE FullName()//

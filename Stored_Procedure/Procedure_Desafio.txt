@@ -1,0 +1,22 @@
+
+        Desafio: Mostrar o primeiro nome do empregado e o salario
+
+        DELIMITER // 
+            CREATE PROCEDURE nome_emp_salary_emp()
+            BEGIN 
+                SELECT employees.first_name, employees.last_name, salaries.salary
+                FROM employees
+                INNER JOIN salaries
+                ON employees.emp_no = salaries.emp_no;
+            END//
+            CALL nome_emp_salary_emp//
+
+
+        Desafio: Salarios mais altos
+
+        CREATE PROCEDURE maioresSalarios(IN valor DOUBLE)
+                                    BEGIN 
+                                        SELECT salary AS Salarios_Maiores FROM salaries WHERE salary >= valor;
+                                    END//
+
+                                    CALL maioresSalarios (80000)//

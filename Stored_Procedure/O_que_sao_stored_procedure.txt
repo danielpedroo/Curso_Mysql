@@ -1,0 +1,10 @@
+ O que são as Stored Procedures
+
+    Uma query que pode ser reutilizada 
+        -->O recurso se assemelha a funções de linguagens de programação
+            --> Pode receber parametros;
+                --> Ha a necessidade do uso de um recurso chamado DELIMETERS
+                    --> Para delimitar quando inicia e finaliza a Procedures
+
+            
+    

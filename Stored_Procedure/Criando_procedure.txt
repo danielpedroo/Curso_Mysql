@@ -1,0 +1,9 @@
+    Criado uma procedure
+
+        Alem de alterar o delimeter temos que utilizar outros recursos
+
+        --BEGIN: inicia a procedure
+        --END: finaliza a procedure
+
+          E claro: criar a query que sera repitida
+          Podemos chamar a procedure com CALL
